@@ -80,7 +80,7 @@
   .login-box a:hover {
     background: red;
     color: #272727;
-    border-radius: 5px;
+    border-radius: 10px;
   }
   
   .login-box a span {

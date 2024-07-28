@@ -9,25 +9,30 @@
 <body>
     
     <div class="login-box">
-        <p>Presensi Kehadiran</p>
-        <form action="" method="">
-          <div class="user-box">
-            <input required name="nama" type="text">
-            <label>Nama</label>
-          </div>
-          <div class="user-box">
-            <input required name="angkatan" type="text">
-            <label>Angkatan</label>
-          </div>
-          <button type="submit">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            Kirim
-          </a>
-        </form>
-      </div>
-
+      <p>Presensi Kehadiran</p>
+      <form id="myForm" action="https://script.google.com/macros/s/AKfycbwIv5ykdjlpevKBdTGjqSNxiNGe6MwgMNnhXmjscAumDBwY0yjUJ152MP7sOA7TyboO/exec" method="POST">
+        <div class="user-box">
+          <input name="Nama" id="Nama" type="text" required>
+          <label>Nama</label>
+        </div>
+        <div class="user-box">
+          <input name="Tamu" id="Tamu" type="text" required>
+          <label>Angkatan</label>
+        </div>
+        <button type="submit">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          Kirim
+        </button>
+      </form>
+    </div>
+    <script>
+      function clearInputHistory() {
+        document.getElementById('Nama').value = '';
+        document.getElementById('Tamu').value = '';
+      }
+    </script>
 </body>
 </html>

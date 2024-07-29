@@ -39,7 +39,8 @@
         method: 'POST',
         body: formData,
       })
-      .then(.then(data => {
+      .then(Response.json()
+        .then(data => {
           if (data.result === 'success') {
             alert('Registrasi Data Berhasil Terkirim!');
           } else {

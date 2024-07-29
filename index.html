@@ -5,18 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form Registrasi</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="Logo REFORMATIKA 23.png" type="image/x-icon">
 </head>
 <body>
     
     <div class="login-box">
       <p>Presensi Kehadiran</p>
-      <form id="myForm" action="https://script.google.com/macros/s/AKfycbwIv5ykdjlpevKBdTGjqSNxiNGe6MwgMNnhXmjscAumDBwY0yjUJ152MP7sOA7TyboO/exec" method="POST">
+      <form id="my-form" action="https://script.google.com/macros/s/AKfycbziGC-v9xSg4vhH8Fsr5bbDDUQmyp6hkWyDctWJtokQu2N4LyLPBmYTmGkKq1mvjuBs/exec" method="POST">
         <div class="user-box">
-          <input name="Nama" id="Nama" type="text" required>
+          <input name="Nama" type="text" required>
           <label>Nama</label>
         </div>
         <div class="user-box">
-          <input name="Tamu" id="Tamu" type="text" required>
+          <input name="Tamu" type="text" required>
           <label>Angkatan</label>
         </div>
         <button type="submit">
@@ -28,11 +29,34 @@
         </button>
       </form>
     </div>
+
+
     <script>
-      function clearInputHistory() {
-        document.getElementById('Nama').value = '';
-        document.getElementById('Tamu').value = '';
-      }
+      window.addEventListener("load", function() {
+        const form = document.getElementById('my-form');
+        form.addEventListener("submit", function(e) {
+          e.preventDefault();
+          const data = new FormData(form);
+          const action = e.target.action;
+          fetch(action, {
+            method: 'POST',
+            body: data,
+          })
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+            return response.text();
+          })
+          .then(() => {
+            alert("Registrasi Data Berhasil Terkirim!");
+          })
+          .catch(error => {
+            console.error('There was a problem with the fetch operation:', error);
+            alert("Terjadi Kesalahan Dalam Pengiriman Data");
+          });
+        });
+      });
     </script>
 </body>
 </html>

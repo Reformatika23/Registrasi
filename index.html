@@ -34,18 +34,19 @@
       e.preventDefault();  // Mencegah pengiriman form default
       
       const formData = new FormData(this);
-      
-      fetch(this.action, {
+      const actions = this.action;
+      fetch(this.actions, {
         method: 'POST',
         body: formData,
       })
-      if ('success') {
-        alert('Registrasi Data Berhasil Terkirim!');
-        .then(response => response.json())
-      } else {
-        alert('Terjadi Kesalahan Dalam Pengiriman Data');
-      }
+      .then(.then(data => {
+          if (data.result === 'success') {
+            alert('Registrasi Data Berhasil Terkirim!');
+          } else {
+            alert('Terjadi Kesalahan Dalam Pengiriman Data');
+          }
+        }))
     });
-  </script>
-</body>
+    </script>
+  </body>
 </html>

@@ -17,7 +17,7 @@
       </div>
       <div class="user-box">
         <input name="Tamu" id="Tamu" type="text" required>
-        <label>Angkatan</label>
+        <label>Identitas</label>
       </div>
       <button type="submit">
         <span></span>
@@ -29,25 +29,26 @@
     </form>
   </div>
 
-  <script>
+  <!-- <script>
     document.getElementById('my-form').addEventListener('submit', function(e) {
-      e.preventDefault();  // Mencegah pengiriman form default
-      
-      const formData = new FormData(this);
-      const actions = this.action;
-      fetch(this.actions, {
-        method: 'POST',
-        body: formData,
-      })
-      .then(Response.json()
-        .then(data => {
-          if (data.result === 'success') {
+        e.preventDefault();  // Prevent default form submission
+        
+        const formData = new FormData(this);
+        const action = this.action;
+        
+        fetch(action, {
+            method: 'POST',
+            body: formData,
+        })
+        .then(response => response.json());
+        .then(data.result === 'success') {
             alert('Registrasi Data Berhasil Terkirim!');
-          } else {
+        }
+        .catch(error => {
+            console.error('Error:', error);
             alert('Terjadi Kesalahan Dalam Pengiriman Data');
-          }
-        }))
+        });
     });
-    </script>
-  </body>
+      </script> -->
+    </body>
 </html>

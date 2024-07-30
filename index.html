@@ -16,8 +16,8 @@
         <label>Nama</label>
       </div>
       <div class="user-box">
-        <input name="Tamu" id="Tamu" type="text" required>
-        <label>Identitas</label>
+        <input name="Angkatan" id="Angkatan" type="text" required>
+        <label>Angkatan</label>
       </div>
       <button type="submit">
         <span></span>
@@ -40,15 +40,19 @@
             method: 'POST',
             body: formData,
         })
-        .then(response => response.json());
-        .then(data.result === 'success') {
-            alert('Registrasi Data Berhasil Terkirim!');
-        }
+        .then(response => response.json())
+        .then(data => {
+            if (data.result === 'success') {
+                alert('Registrasi Data Berhasil Terkirim!');
+            } else {
+                alert('Terjadi Kesalahan Dalam Pengiriman Data');
+            }
+        })
         .catch(error => {
             console.error('Error:', error);
             alert('Terjadi Kesalahan Dalam Pengiriman Data');
         });
     });
-      </script>
+</script>
     </body>
 </html>

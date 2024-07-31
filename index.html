@@ -10,7 +10,7 @@
 <body>
   <div class="login-box">
     <p>Presensi Kehadiran</p>
-    <form id="my-form" action="https://script.google.com/macros/s/AKfycbz0on2i0jwaL5WQfUT9aBtYZURnD_Fb4oU4JmQcfoLJtZw3l_HrFzRz-0_Q-yJNq6fp/exec" method="POST">
+    <form id="my-form" action="https://script.google.com/macros/s/AKfycbxoJ-bSoUZNXkr0nEzCnqTRfV6X8chYtj8Kbo90vNbJnga_ETyLXc5TlgzYY86w3k8W/exec" method="POST">
       <div class="user-box">
         <input name="Nama" id="Nama" type="text" required>
         <label>Nama</label>
@@ -29,31 +29,29 @@
     </form>
   </div>
 
-  <!-- <script>
+  <script>
     document.getElementById('my-form').addEventListener('submit', function(e) {
-        e.preventDefault();  // Prevent default form submission
-        
-        const formData = new FormData(this);
-        const action = this.action;
-        
-        fetch(action, {
-            method: 'POST',
-            body: formData,
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.result === 'success') {
-                alert('Registrasi Data Berhasil Terkirim!');
-            } else {
-                alert('Terjadi Kesalahan Dalam Pengiriman Data');
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('Terjadi Kesalahan Dalam Pengiriman Data');
-        });
+      e.preventDefault();  // Mencegah pengiriman form default
+
+      const formData = new FormData(this);
+      const actionUrl = this.action;
+
+      fetch(actionUrl, {
+        method: 'POST',
+        body: formData,
+      })
+      .then(response => response.json())
+      .then(data => {
+        // Menampilkan alert sukses
+        alert('Registrasi Data Berhasil Terkirim!');
+      })
+      .catch(error => {
+        // Menampilkan alert kesalahan
+        alert('Terjadi Kesalahan Dalam Pengiriman Data');
+        console.error('Error:', error);
+      });
     });
-</script> -->
+  </script>
 
     </body>
 </html>

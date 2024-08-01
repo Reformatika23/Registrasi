@@ -15,8 +15,8 @@
         <input name="Nama" id="Nama" type="text" required>
         <label>Nama</label>
       </div>
-      <div class="user-box">
-        <select name="Tamu" id="Tamu" required onchange="showAdditionalInput()">
+      <div class="user-box2">
+        <select name="Tamu" id="Tamu" inputmode="select" required onchange="showAdditionalInput()">
           <option value="">--Pilih Tamu--</option>
           <option value="dosen">Dosen</option>
           <option value="mahasiswa">Mahasiswa</option>
@@ -47,19 +47,30 @@
             <label>Jabatan</label>
           </div>
         `;
+        submitBtn.disabled = false;
       } else if (tamu === "mahasiswa") {
         additionalInput.innerHTML = `
-          <div class="user-box">
-            <input name="Jurusan" id="Jurusan" type="text" required>
-            <label>Jurusan</label>
+        <div class="user-box">
+          <input name="Jurusan" id="Jurusan" type="text" required>
+          <label>Jurusan</label>
           </div>
           <div class="user-box">
             <input name="Angkatan" id="Angkatan" type="text" required>
             <label>Angkatan</label>
+            </div>
+            `;
+            submitBtn.disabled = false;
+      } else if (tamu === "lainnya") {
+        additionalInput.innerHTML = `
+          <div class="user-box">
+            <input name="Instansi" id="Instansi" type="text" required>
+            <label>Instansi</label>
           </div>
         `;
+        submitBtn.disabled = false;
       } else {
         additionalInput.innerHTML = "";
+        submitBtn.disabled = true;
       }
     }
 

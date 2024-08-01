@@ -16,9 +16,15 @@
         <label>Nama</label>
       </div>
       <div class="user-box">
-        <input name="Tamu" id="Tamu" type="text" required>
-        <label>Tamu</label>
+        <select name="Tamu" id="Tamu" required onchange="showAdditionalInput()">
+          <option value="">--Pilih Tamu--</option>
+          <option value="dosen">Dosen</option>
+          <option value="mahasiswa">Mahasiswa</option>
+          <option value="lainnya">Lainnya</option>
+        </select>
+        <!-- <label>Tamu</label> -->
       </div>
+      <div id="additionalInput"></div>
       <button type="submit">
         <span></span>
         <span></span>
@@ -30,6 +36,33 @@
   </div>
 
   <script>
+    function showAdditionalInput() {
+      const tamu = document.getElementById("Tamu").value;
+      const additionalInput = document.getElementById("additionalInput");
+
+      if (tamu === "dosen") {
+        additionalInput.innerHTML = `
+          <div class="user-box">
+            <input name="Jabatan" id="Jabatan" type="text" required>
+            <label>Jabatan</label>
+          </div>
+        `;
+      } else if (tamu === "mahasiswa") {
+        additionalInput.innerHTML = `
+          <div class="user-box">
+            <input name="Jurusan" id="Jurusan" type="text" required>
+            <label>Jurusan</label>
+          </div>
+          <div class="user-box">
+            <input name="Angkatan" id="Angkatan" type="text" required>
+            <label>Angkatan</label>
+          </div>
+        `;
+      } else {
+        additionalInput.innerHTML = "";
+      }
+    }
+
     document.getElementById('my-form').addEventListener('submit', function(e) {
       e.preventDefault();  // Mencegah pengiriman form default
 

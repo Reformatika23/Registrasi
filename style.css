@@ -40,6 +40,19 @@
   background: transparent;
 }
 
+.login-box .user-box select {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  /* color: red; */
+  color: red;
+  margin-bottom: 50px;
+  border: none;
+  border-bottom: 1px solid red;
+  outline: none;
+  background: transparent;
+}
+
 .login-box .user-box label {
   position: absolute;
   top: 0;

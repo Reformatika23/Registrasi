@@ -10,7 +10,7 @@
 <body>
   <div class="login-box">
     <p>Presensi Kehadiran</p>
-    <form id="my-form" action="https://script.google.com/macros/s/AKfycbxa_Ho6aEIdAjbdD3ESMXPBJLWIqiYi0BBgwDoZDqms4y390ReO-XlPPdTD_NZlf_gh/exec" method="POST">
+    <form id="my-form" action="https://script.google.com/macros/s/AKfycbyRgj6PDTwJ7ko0nz6dEPhugfNJaAKzmXCAuOfcOp3M_9zfrRQBkcsxIcp1y6ohKJP7/exec" method="POST">
       <div class="user-box">
         <input name="Nama" id="Nama" type="text" required>
         <label>Nama</label>
@@ -18,14 +18,14 @@
       <div class="user-box2">
         <select name="Tamu" id="Tamu" inputmode="select" required onchange="showAdditionalInput()">
           <option value="">--Pilih Tamu--</option>
-          <option value="dosen">Dosen</option>
-          <option value="mahasiswa">Mahasiswa</option>
-          <option value="lainnya">Lainnya</option>
+          <option value="Dosen">Dosen</option>
+          <option value="Mahasiswa">Mahasiswa</option>
+          <option value="Lainnya">Lainnya</option>
         </select>
         <!-- <label>Tamu</label> -->
       </div>
       <div id="additionalInput"></div>
-      <button type="submit">
+      <button type="submit" id="submitBtn">
         <span></span>
         <span></span>
         <span></span>
@@ -39,31 +39,32 @@
     function showAdditionalInput() {
       const tamu = document.getElementById("Tamu").value;
       const additionalInput = document.getElementById("additionalInput");
+      const submitBtn = document.getElementById("submitBtn");
 
-      if (tamu === "dosen") {
+      if (tamu === "Dosen") {
         additionalInput.innerHTML = `
           <div class="user-box">
-            <input name="Jabatan" id="Jabatan" type="text" required>
+            <input name="Jabatan (Dosen)" id="Jabatan" type="text" required>
             <label>Jabatan</label>
           </div>
         `;
         submitBtn.disabled = false;
-      } else if (tamu === "mahasiswa") {
+      } else if (tamu === "Mahasiswa") {
         additionalInput.innerHTML = `
         <div class="user-box">
-          <input name="Jurusan" id="Jurusan" type="text" required>
+          <input name="Jurusan (Mahasiswa)" id="Jurusan" type="text" required>
           <label>Jurusan</label>
           </div>
           <div class="user-box">
-            <input name="Angkatan" id="Angkatan" type="text" required>
+            <input name="Angkatan (Mahasiswa)" id="Angkatan" type="text" required>
             <label>Angkatan</label>
-            </div>
-            `;
-            submitBtn.disabled = false;
-      } else if (tamu === "lainnya") {
+          </div>
+        `;
+        submitBtn.disabled = false;
+      } else if (tamu === "Lainnya") {
         additionalInput.innerHTML = `
           <div class="user-box">
-            <input name="Instansi" id="Instansi" type="text" required>
+            <input name="Instansi (Lainnya)" id="Instansi (Lainnya)" type="text" required>
             <label>Instansi</label>
           </div>
         `;
@@ -76,10 +77,11 @@
 
     document.getElementById('my-form').addEventListener('submit', function(e) {
       e.preventDefault();  // Mencegah pengiriman form default
-
+      submitBtn.disabled = true;
+      
       const formData = new FormData(this);
       const actionUrl = this.action;
-
+      
       fetch(actionUrl, {
         method: 'POST',
         body: formData,
@@ -87,6 +89,7 @@
       .then(response => response.json())
       .then(data => {
         // Menampilkan alert sukses
+        window.location.reload();
         alert('Registrasi Data Berhasil Terkirim!');
       })
       .catch(error => {

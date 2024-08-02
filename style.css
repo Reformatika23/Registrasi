@@ -87,6 +87,11 @@ body, html {
   transition: .5s;
 }
 
+.login-box .user-box2 label {
+  color: red;
+  font-size: 12px;
+}
+
 .login-box .user-box input:focus ~ label,
 .login-box .user-box input:valid ~ label {
   top: -28px;

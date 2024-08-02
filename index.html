@@ -8,34 +8,33 @@
   <link rel="shortcut icon" href="Logo REFORMATIKA 23.png" type="image/x-icon">
 </head>
 <body>
-  <div class="margin-top">
-    <p></p>
-  </div>
-  <div class="login-box">
-    <p>Presensi Kehadiran</p>
-    <form id="my-form" action="https://script.google.com/macros/s/AKfycbyRgj6PDTwJ7ko0nz6dEPhugfNJaAKzmXCAuOfcOp3M_9zfrRQBkcsxIcp1y6ohKJP7/exec" method="POST">
-      <div class="user-box">
-        <input name="Nama" id="Nama" type="text" required>
-        <label>Nama</label>
-      </div>
-      <div class="user-box2">
-        <select name="Tamu" id="Tamu" required onchange="showAdditionalInput()">
-          <option value="">--Pilih Tamu--</option>
-          <option value="Dosen">Dosen</option>
-          <option value="Mahasiswa">Mahasiswa</option>
-          <option value="Lainnya">Lainnya</option>
-        </select>
-        <!-- <label>Tamu</label> -->
-      </div>
-      <div id="additionalInput"></div>
-      <button type="submit" id="submitBtn">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        Kirim
-      </button>
-    </form>
+  <div class="container">
+    <div class="login-box">
+      <p>Presensi Kehadiran</p>
+      <form id="my-form" action="https://script.google.com/macros/s/AKfycbyRgj6PDTwJ7ko0nz6dEPhugfNJaAKzmXCAuOfcOp3M_9zfrRQBkcsxIcp1y6ohKJP7/exec" method="POST">
+        <div class="user-box">
+          <input name="Nama" id="Nama" type="text" required>
+          <label>Nama</label>
+        </div>
+        <div class="user-box2">
+          <select name="Tamu" id="Tamu" required onchange="showAdditionalInput()">
+            <option value="">--Pilih Tamu--</option>
+            <option value="Dosen">Dosen</option>
+            <option value="Mahasiswa">Mahasiswa</option>
+            <option value="Lainnya">Lainnya</option>
+          </select>
+          <!-- <label>Tamu</label> -->
+        </div>
+        <div id="additionalInput"></div>
+        <button type="submit" id="submitBtn">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          Kirim
+        </button>
+      </form>
+    </div>
   </div>
 
   <script>
@@ -91,7 +90,7 @@
       .then(response => response.json())
       .then(data => {
         // Menampilkan alert sukses
-        window.location.reload();
+        location.reload();
         alert('Registrasi Data Berhasil Terkirim!');
       })
       .catch(error => {

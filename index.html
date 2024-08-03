@@ -1,59 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Form Registrasi REFORMATIKA 23</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="shortcut icon" href="Logo_REFORMATIKA_23.png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Registrasi REFORMATIKA 23</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="Logo_REFORMATIKA_23.png" type="image/x-icon">
 </head>
+
 <body>
-  <div class="container">
-    <div class="login-box">
-      <p>Presensi Kehadiran</p>
-      <form id="my-form" method="POST" action="https://script.google.com/macros/s/AKfycbyRgj6PDTwJ7ko0nz6dEPhugfNJaAKzmXCAuOfcOp3M_9zfrRQBkcsxIcp1y6ohKJP7/exec">
-        <div class="user-box">
-          <input name="Nama" id="Nama" type="text" required>
-          <label>Nama</label>
-        </div>
-        <div class="user-box2">
-          <label>Tamu</label>
-          <select name="Tamu" id="Tamu" required onchange="showAdditionalInput()">
+    <div class="container">
+        <div class="login-box">
+            <p>Presensi Kehadiran</p>
+            <form id="my-form" method="POST" action="https://script.google.com/macros/s/AKfycbyRgj6PDTwJ7ko0nz6dEPhugfNJaAKzmXCAuOfcOp3M_9zfrRQBkcsxIcp1y6ohKJP7/exec">
+                <div class="user-box">
+                    <input name="Nama" id="Nama" type="text" required>
+                    <label>Nama</label>
+                </div>
+                <div class="user-box2">
+                    <label>Tamu</label>
+                    <select name="Tamu" id="Tamu" required onchange="showAdditionalInput()">
             <option value="">--Pilih Tamu--</option>
             <option value="Dosen">Dosen</option>
             <option value="Mahasiswa">Mahasiswa</option>
             <option value="Lainnya">Lainnya</option>
           </select>
-        </div>
-        <div id="additionalInput"></div>
-        <button type="submit" id="submitBtn">
+                </div>
+                <div id="additionalInput"></div>
+                <button type="submit" id="submitBtn">
           <span></span>
           <span></span>
           <span></span>
           <span></span>
           Kirim
         </button>
-      </form>
+            </form>
+        </div>
     </div>
-  </div>
-  
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script>
-    function showAdditionalInput() {
-      const tamu = document.getElementById("Tamu").value;
-      const additionalInput = document.getElementById("additionalInput");
-      const submitBtn = document.getElementById("submitBtn");
-      
-      if (tamu === "Dosen") {
-        additionalInput.innerHTML = `
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        function showAdditionalInput() {
+            const tamu = document.getElementById("Tamu").value;
+            const additionalInput = document.getElementById("additionalInput");
+            const submitBtn = document.getElementById("submitBtn");
+
+            if (tamu === "Dosen") {
+                additionalInput.innerHTML = `
         <div class="user-box">
           <input name="Jabatan (Dosen)" id="Jabatan" type="text" required>
           <label>Jabatan</label>
           </div>
         `;
-        submitBtn.disabled = false;
-      } else if (tamu === "Mahasiswa") {
-        additionalInput.innerHTML = `
+                submitBtn.disabled = false;
+            } else if (tamu === "Mahasiswa") {
+                additionalInput.innerHTML = `
         <div class="user-box">
           <input name="Jurusan (Mahasiswa)" id="Jurusan" type="text" required>
           <label>Jurusan</label>
@@ -63,61 +65,62 @@
             <label>Angkatan</label>
           </div>
         `;
-        submitBtn.disabled = false;
-      } else if (tamu === "Lainnya") {
-        additionalInput.innerHTML = `
+                submitBtn.disabled = false;
+            } else if (tamu === "Lainnya") {
+                additionalInput.innerHTML = `
           <div class="user-box">
             <input name="Instansi (Lainnya)" id="Instansi (Lainnya)" type="text" required>
             <label>Instansi</label>
           </div>
         `;
-        submitBtn.disabled = false;
-      } else {
-        additionalInput.innerHTML = "";
-      }
-    }
-
-    document.getElementById('my-form').addEventListener('submit', function(e) {
-      e.preventDefault();  // Mencegah pengiriman form default
-      submitBtn.disabled = true;
-      
-      Swal.fire({
-        title: 'Sedang Proses...',
-        text: 'Data Anda Sedang Dikirimkan!',
-        icon: 'info',
-        allowOutsideClick: false,
-        showConfirmButton: false,
-        didOpen: () => {
-          Swal.showLoading();
+                submitBtn.disabled = false;
+            } else {
+                additionalInput.innerHTML = "";
+            }
         }
-      });
-      
-      const formData = new FormData(this);
-      const actionUrl = this.action; 
-      
-      fetch(actionUrl, {
-        method: 'POST',
-        body: formData,
-      })
-      .then(response =>  {
-        const nama = document.getElementById('Nama').value;
-        Swal.close();
-        Swal.fire({
-          title: 'Registrasi Berhasil!',
-          html: `
+
+        document.getElementById('my-form').addEventListener('submit', function(e) {
+            e.preventDefault(); // Mencegah pengiriman form default
+            submitBtn.disabled = true;
+
+            Swal.fire({
+                title: 'Sedang Proses...',
+                text: 'Data Anda Sedang Dikirimkan!',
+                icon: 'info',
+                allowOutsideClick: false,
+                showConfirmButton: false,
+                didOpen: () => {
+                    Swal.showLoading();
+                }
+            });
+
+            const formData = new FormData(this);
+            const actionUrl = this.action;
+
+            fetch(actionUrl, {
+                    method: 'POST',
+                    body: formData,
+                })
+                .then(response => {
+                    const nama = document.getElementById('Nama').value;
+                    Swal.close();
+                    Swal.fire({
+                        title: 'Registrasi Berhasil!',
+                        html: `
             Selamat Datang ${nama} di REFORMATIKA 23!
           `,
-          icon: 'success',
-          allowOutsideClick: false,
-          confirmButtonText: 'OK'
-        }).then((result) => {
-          if (result.isConfirmed) {
-            window.location.replace('https://reformatika23.github.io/Undangan-Digital-Reformatika-23/');
-          }
+                        icon: 'success',
+                        allowOutsideClick: false,
+                        confirmButtonText: 'OK'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.replace('about:blank');
+                        }
+                    });
+                })
         });
-      })
-    });
     </script>
 
 </body>
+
 </html>
